@@ -1,0 +1,1707 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Blockshine exchange backend manage api doc",
+    "version": "1.0.0",
+    "title": "Blockshine exchange backend manage api doc",
+    "termsOfService": "http://127.0.0.1",
+    "contact": {
+      "email": "hhy5861@gmail.com"
+    }
+  },
+  "host": "127.0.0.1",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "account",
+      "description": "account manage"
+    },
+    {
+      "name": "access",
+      "description": "access manage"
+    },
+    {
+      "name": "role",
+      "description": "role manage"
+    },
+    {
+      "name": "role-access",
+      "description": "role and access manage"
+    },
+    {
+      "name": "account-role",
+      "description": "account and role manage"
+    },
+    {
+      "name": "account-pertain-access",
+      "description": "account pertain access"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/account/register": {
+      "post": {
+        "tags": [
+          "account"
+        ],
+        "summary": "Add a new account",
+        "description": "add account",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "add account",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountResponse"
+            }
+          }
+        }
+      }
+    },
+    "/account/login": {
+      "post": {
+        "tags": [
+          "account"
+        ],
+        "summary": "account on login",
+        "description": "account on login",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "account login return token",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountResponse"
+            }
+          }
+        }
+      }
+    },
+    "/account/search": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "summary": "search account list",
+        "description": "search account list",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "account name",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "account e-mail",
+            "type": "string"
+          },
+          {
+            "name": "mobile",
+            "in": "query",
+            "description": "account mobile",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "get page number",
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "get page size number",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountResponse"
+            }
+          }
+        }
+      }
+    },
+    "/account/disabled": {
+      "put": {
+        "tags": [
+          "account"
+        ],
+        "summary": "disabled account",
+        "description": "disabled account",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "disabled account",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AccountDisabled"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountResponse"
+            }
+          }
+        }
+      }
+    },
+    "/account/update": {
+      "put": {
+        "tags": [
+          "account"
+        ],
+        "summary": "update account info",
+        "description": "update account info",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update account info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AccountUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountResponse"
+            }
+          }
+        }
+      }
+    },
+    "/account/change-password": {
+      "put": {
+        "tags": [
+          "account"
+        ],
+        "summary": "change password",
+        "description": "change account password",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "change account password",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChangePassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountResponse"
+            }
+          }
+        }
+      }
+    },
+    "/account/set-admin": {
+      "put": {
+        "tags": [
+          "account"
+        ],
+        "summary": "set admin and remove admin",
+        "description": "set account is admin and remove account admin",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "set account is admin and remove account admin",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AccountSetAdmin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountResponse"
+            }
+          }
+        }
+      }
+    },
+    "/account/logout": {
+      "delete": {
+        "tags": [
+          "account"
+        ],
+        "summary": "account log out",
+        "description": "account log out",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "account log out",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AccountSetAdmin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ga/verify": {
+      "post": {
+        "tags": [
+          "account"
+        ],
+        "summary": "google authenticator verify",
+        "description": "google authenticator verify",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "google authenticator verify",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GoogleVerify"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ga/bind": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "summary": "bind google authenticator",
+        "description": "account bind google authenticator",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "bind google",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/access/add-access": {
+      "post": {
+        "tags": [
+          "access"
+        ],
+        "summary": "add access",
+        "description": "add new access",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "add new access",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddAccess"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccessResponse"
+            }
+          }
+        }
+      }
+    },
+    "/access/search": {
+      "get": {
+        "tags": [
+          "access"
+        ],
+        "summary": "search access list",
+        "description": "search access list",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "parent_id",
+            "in": "query",
+            "description": "parent id",
+            "type": "integer"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "access name",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "get page number",
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "get page size number",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccessResponse"
+            }
+          }
+        }
+      }
+    },
+    "/access/delete": {
+      "delete": {
+        "tags": [
+          "access"
+        ],
+        "summary": "delete access",
+        "description": "delete access by id",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "delete access by id",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteAccess"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccessResponse"
+            }
+          }
+        }
+      }
+    },
+    "/access/update": {
+      "post": {
+        "tags": [
+          "access"
+        ],
+        "summary": "update access",
+        "description": "update a access info",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update access",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateAccess"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccessResponse"
+            }
+          }
+        }
+      }
+    },
+    "/role/add-role": {
+      "post": {
+        "tags": [
+          "role"
+        ],
+        "summary": "add role",
+        "description": "add new role",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "add new role",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddRole"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/RoleResponse"
+            }
+          }
+        }
+      }
+    },
+    "/role/search": {
+      "get": {
+        "tags": [
+          "role"
+        ],
+        "summary": "search role list",
+        "description": "search role list",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "role id",
+            "type": "integer"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "role name",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "role status",
+            "type": "integer"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "get page number",
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "get page size number",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/RoleResponse"
+            }
+          }
+        }
+      }
+    },
+    "/role/delete": {
+      "delete": {
+        "tags": [
+          "role"
+        ],
+        "summary": "delete role",
+        "description": "delete role by id",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "delete role by id",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteRole"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/RoleResponse"
+            }
+          }
+        }
+      }
+    },
+    "/role/update": {
+      "put": {
+        "tags": [
+          "role"
+        ],
+        "summary": "update role",
+        "description": "update a role info",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update role",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateRole"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/RoleResponse"
+            }
+          }
+        }
+      }
+    },
+    "/role/disabled": {
+      "put": {
+        "tags": [
+          "role"
+        ],
+        "summary": "disabled role",
+        "description": "disabled a role status",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "disabled role",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DisabledRole"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/RoleResponse"
+            }
+          }
+        }
+      }
+    },
+    "/role-access/search": {
+      "get": {
+        "tags": [
+          "role-access"
+        ],
+        "summary": "search role access list",
+        "description": "search role and access list",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "role_id",
+            "in": "query",
+            "description": "role id",
+            "type": "integer"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "get page number",
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "get page size number",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/RoleAccessResponse"
+            }
+          }
+        }
+      }
+    },
+    "/role/set-role-access": {
+      "post": {
+        "tags": [
+          "role-access"
+        ],
+        "summary": "set role access",
+        "description": "set access in role",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "set access in role",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetRoleAccess"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "set access role success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user-role/search-user-role": {
+      "get": {
+        "tags": [
+          "account-role"
+        ],
+        "summary": "search access role list",
+        "description": "search access and role list",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "role_id",
+            "in": "query",
+            "description": "role id",
+            "type": "integer"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "user id",
+            "type": "integer"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "get page number",
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "get page size number",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountRoleResponse"
+            }
+          }
+        }
+      }
+    },
+    "/user-role/set-user-role": {
+      "post": {
+        "tags": [
+          "account-role"
+        ],
+        "summary": "set account role",
+        "description": "set account in to role",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "set access in role",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AccountRole"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "sset account in to role",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "format": "int64"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user-role/search-user-pertain-access": {
+      "get": {
+        "tags": [
+          "account-pertain-access"
+        ],
+        "summary": "get account pertain access list",
+        "description": "get account pertain access list",
+        "operationId": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "user id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserPertainAccessResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "token": {
+      "type": "apiKey",
+      "name": "token",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Register": {
+      "type": "object",
+      "required": [
+        "name",
+        "password",
+        "email",
+        "mobile"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        }
+      }
+    },
+    "Login": {
+      "type": "object",
+      "required": [
+        "name",
+        "password"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "AccountList": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "AccountDisabled": {
+      "type": "object",
+      "required": [
+        "id",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64",
+          "description": "状态(0:禁用,1:正常)"
+        }
+      }
+    },
+    "AccountUpdate": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "google_auth": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "google_secret": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "is_admin": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "valid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "ChangePassword": {
+      "type": "object",
+      "required": [
+        "id",
+        "password",
+        "confirm_password"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "password": {
+          "type": "string"
+        },
+        "confirm_password": {
+          "type": "string"
+        }
+      }
+    },
+    "AccountSetAdmin": {
+      "type": "object",
+      "required": [
+        "id",
+        "is_admin"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "is_admin": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "GoogleVerify": {
+      "type": "object",
+      "required": [
+        "code"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "AccountResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/AccountData"
+        }
+      }
+    },
+    "AccountData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "password": {
+          "type": "string"
+        },
+        "google_auth": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "google_secret": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "is_admin": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "is_gauth": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "token": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "valid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "AddAccess": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "parent_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        },
+        "is_auth": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "is_menu": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "DeleteAccess": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "UpdateAccess": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "parent_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "AccessResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/AccessData"
+        }
+      }
+    },
+    "AccessData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "parent_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        },
+        "is_auth": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "is_menu": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "valid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "AddRole": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "DeleteRole": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "UpdateRole": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "DisabledRole": {
+      "type": "object",
+      "required": [
+        "id",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64",
+          "description": "(0:disabled,1:enable)"
+        }
+      }
+    },
+    "RoleResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/RoleData"
+        }
+      }
+    },
+    "RoleData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "valid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "SetRoleAccess": {
+      "type": "object",
+      "required": [
+        "access_id",
+        "role_id"
+      ],
+      "properties": {
+        "role_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "access_id": {
+          "type": "string",
+          "description": "Multiple IDs Use Separate (,)"
+        }
+      }
+    },
+    "RoleAccessResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/RoleAccessData"
+        }
+      }
+    },
+    "RoleAccessData": {
+      "type": "object",
+      "properties": {
+        "total_result": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "has_next": {
+          "type": "boolean"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "list": {
+          "$ref": "#/definitions/RoleAccessDataList"
+        }
+      }
+    },
+    "RoleAccessDataList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "role_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "access_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "valid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "AccountRole": {
+      "type": "object",
+      "required": [
+        "access_id",
+        "role_id"
+      ],
+      "properties": {
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "role_id": {
+          "type": "string",
+          "description": "Multiple IDs Use Separate (,)"
+        }
+      }
+    },
+    "AccountRoleResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/RoleAccessData"
+        }
+      }
+    },
+    "AccountRoleData": {
+      "type": "object",
+      "properties": {
+        "total_result": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "has_next": {
+          "type": "boolean"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "list": {
+          "$ref": "#/definitions/RoleAccessDataList"
+        }
+      }
+    },
+    "AccountRoleDataList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "role_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "valid": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "UserPertainAccessResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/UserPertainAccessData"
+        }
+      }
+    },
+    "UserPertainAccessData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "parent_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        },
+        "is_auth": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "is_menu": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "valid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "children": {
+          "$ref": "#/definitions/UserPertainAccessData"
+        }
+      }
+    }
+  }
+}
